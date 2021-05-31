@@ -11,12 +11,19 @@ public class CompareMatrices {
         int[] input = readArray(scanner.nextLine());
         int rows = input[0];
         int cols = input[1];
+        int[][] firstMatrix = readMatrix(rows, cols, scanner);
 
-        int[][] firstMatrix = new int[rows][cols];
+        input = readArray(scanner.nextLine());
+        rows = input[0];
+        cols = input[1];
+        int[][] secondMatrix = readMatrix(rows,cols, scanner);
 
-        for (int row = 0; row < rows; row++) {
-            firstMatrix[row] = readArray(scanner.nextLine());
+        if (matricesAreEqual(firstMatrix, secondMatrix)){
+            System.out.println("equal");
+        }else{
+            System.out.println("not equal");
         }
+
 
 
         //Read matrix
@@ -36,6 +43,36 @@ public class CompareMatrices {
 //        }
 
     }
+
+    private static boolean matricesAreEqual(int[][] firstMatrix, int[][] secondMatrix) {
+        if (firstMatrix.length != secondMatrix.length){
+            return false;
+        }
+        for (int row = 0; row < firstMatrix.length; row++) {
+            int[] firstArray = firstMatrix[row];
+            int[] secondArray = secondMatrix[row];
+            if (firstArray.length != secondArray.length){
+                return false;
+            }
+
+            for (int col = 0; col < firstArray.length; col++) {
+                if (firstArray[col] != secondArray[col]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static int[][] readMatrix(int rows, int cols, Scanner scanner) {
+        int[][] matrix = new int[rows][cols];
+
+        for (int row = 0; row < rows; row++) {
+            matrix[row] = readArray(scanner.nextLine());
+        }
+        return matrix;
+    }
+
     public static void printMatrix(int[][] matrix){
         for (int[] arr : matrix) {
             for (int element : arr) {
