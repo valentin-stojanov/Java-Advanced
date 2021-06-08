@@ -15,7 +15,7 @@ public class AcademyGraduation {
 //            double averageScore = Arrays.stream(grades).average().orElse(0);
             nameAndScore.put(name, grades);
         }
-        for (Map.Entry<String, double[]> studentEntry : nameAndScore.entrySet()) {
+        for (var studentEntry : nameAndScore.entrySet()) {
             System.out.println(studentEntry.getKey()+" is graduated with "+  Arrays.stream(studentEntry.getValue()).average().orElse(0));
         }
     }
