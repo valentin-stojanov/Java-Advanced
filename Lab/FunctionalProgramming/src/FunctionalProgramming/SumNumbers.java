@@ -12,10 +12,19 @@ public class SumNumbers {
 
         Function<String, Integer> parse = Integer::parseInt;
 
-        Integer[] numbers = Arrays.stream(scanner.nextLine().split(" ,"))
+        Integer[] numbers = Arrays.stream(scanner.nextLine().split(", "))
                 .map(parse)
                 .toArray(Integer[]::new);
 
+        long count = Arrays.stream(numbers)
+                .count();
+        System.out.println("Count = " + count);
+
+        int sum = Arrays.stream(numbers)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println("Sum = " + sum);
 
     }
 }
