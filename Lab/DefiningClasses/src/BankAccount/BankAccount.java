@@ -6,7 +6,7 @@ public class BankAccount {
 
     private final int ID;
     private double balance;
-    private double interestRate = defaultInterestRate;
+    private static double interestRate = defaultInterestRate;
 
     public BankAccount(){
         this.ID = idCount;
@@ -14,7 +14,7 @@ public class BankAccount {
     }
 
     public static void setInterestRate(double interestRate) {
-        BankAccount.setInterestRate(interestRate);
+        BankAccount.interestRate = interestRate;
     }
 
        public int getID() {
@@ -23,5 +23,13 @@ public class BankAccount {
 
     public void deposit(double amount){
         this.balance = this.balance + amount;
+    }
+
+    public double getBalance(){
+        return this.balance;
+    }
+
+    public static double getInterestRate(){
+        return interestRate;
     }
 }
