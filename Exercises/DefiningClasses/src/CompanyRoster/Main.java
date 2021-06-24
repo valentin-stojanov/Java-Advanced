@@ -26,21 +26,20 @@ public class Main {
 
             Employee employee = new Employee(name, salary, position);
 
-            if (tokens.length == 6){
+            if (tokens.length == 6) {
                 String email = tokens[4];
                 int age = Integer.parseInt(tokens[5]);
                 employee.setEmail(email);
                 employee.setAge(age);
-            }else if (tokens.length == 5){
-                if (Character.isDigit(tokens[4].charAt(0))){
+            } else if (tokens.length == 5) {
+                if (Character.isDigit(tokens[4].charAt(0))) {
                     int age = Integer.parseInt(tokens[4]);
                     employee.setAge(age);
-                }else{
+                } else {
                     String email = tokens[4];
                     employee.setEmail(email);
                 }
             }
-
             departmentMap.get(departmentName).addEmployee(employee);
         }
 
@@ -50,7 +49,7 @@ public class Main {
                 .sorted((f, s) -> Double.compare(s.getValue().averageSalary(), f.getValue().averageSalary()))
                 .limit(1);
 
-        entryStream.forEach((departmentEntry)-> {
+        entryStream.forEach((departmentEntry) -> {
             System.out.println(String.format("Highest Average Salary: %s", departmentEntry.getKey()));
 
             departmentEntry
