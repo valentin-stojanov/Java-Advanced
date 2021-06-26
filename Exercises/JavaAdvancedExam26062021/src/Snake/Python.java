@@ -35,7 +35,7 @@ public class Python {
         boolean isWon = false;
         boolean isEaten = false;
 
-        int command = System.in.read();
+        int command = scanner.next().charAt(0);
         while (true) {
 
             int []newPosition = move(size, position[0], position[1], command);
@@ -61,7 +61,7 @@ public class Python {
             matrix[row][cow] = 's';
 
             printMatrix(matrix);
-            command = System.in.read();
+            command = scanner.next().charAt(0);
         }
 
         if (isWon){
